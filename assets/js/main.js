@@ -46,7 +46,7 @@ while (i < 17) {
 console.log(numeriPc);
 
 i = 0;
-while (i < 86) {
+while (i < 84) {
 
   numeroUtenteProv = Number(prompt("Inserisci numero"));
 
@@ -65,7 +65,7 @@ while (i < 86) {
 
 }
 
-if (i === 86) {
+if (i === 84) {
   console.log("Hai vinto");
 }
 console.log("Il tuo punteggio è " + i);
