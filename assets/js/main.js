@@ -21,9 +21,11 @@ con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2 => tra 1 e 50
 */
 
-var numeroPc = [];
+var numeriPc = [];
 var numeroPcProv = 0;
 var numeroUtente = [];
+var numeroUtenteProv = 0;
+
 
 var i = 1;
 
@@ -32,8 +34,8 @@ while (i < 17) {
 
   for (var y = 0; y < i; y++) {
 
-    if (numeroPc.indexOf(numeroPcProv) === -1) {
-      numeroPc.push(numeroPcProv);
+    if (numeriPc.indexOf(numeroPcProv) === -1) {
+      numeriPc.push(numeroPcProv);
       i++;
     }
 
@@ -41,20 +43,29 @@ while (i < 17) {
 
 }
 
+console.log(numeriPc);
 
-console.log(numeroPc);
+i = 0;
+while (i < 86) {
 
-for (var i = 0; i < 5; i++) {
-  numeroUtente[i] = Number(prompt("Inserisci numero"));
-  console.log(numeroUtente[i]);
+  numeroUtenteProv = Number(prompt("Inserisci numero"));
 
-  for (var x = 0; x < 16; x++) {
-
-    if (numeroPc[x] === numeroUtente[i]) {
+  if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
+    console.log("Inserisci un numero che non hai già inserito");
+  } else {
+    if (numeriPc.indexOf(numeroUtenteProv) !== -1) {
       console.log("Hai perso");
-      broke;
+      break;
+    } else {
+      numeroUtente.push(numeroUtenteProv);
+      console.log(numeroUtente);
+      i++;
     }
-
   }
 
 }
+
+if (i === 86) {
+  console.log("Hai vinto");
+}
+console.log("Il tuo punteggio è " + i);
