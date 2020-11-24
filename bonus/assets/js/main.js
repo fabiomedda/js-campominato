@@ -25,16 +25,13 @@ function getRandomNumber(quantitàNumeriInser, numeroMassimoRaggiungibile) {
   var i = 1, numeriFunzione = [], numeroPcProv = 0;
   while (i <= quantitàNumeriInser) {
     numeroPcProv = Math.ceil( Math.random() * numeroMassimoRaggiungibile );
-    for (var y = 0; y < i; y++) {
-      if (numeriFunzione.indexOf(numeroPcProv) === -1) {
-        numeriFunzione.push(numeroPcProv);
-        i++;
-      }
+    if (numeriFunzione.indexOf(numeroPcProv) === -1) {
+      numeriFunzione.push(numeroPcProv);
+      i++;
     }
   }
   return numeriFunzione;
 }
-
 
 var numeriPc = [], numeroUtente = [], numeroUtenteProv = 0;
 var difficoltà = Number(prompt("scegli difficoltà 0 = facile, 1 = medio, 2 = difficile"));
@@ -131,7 +128,7 @@ switch (difficoltà) {
           console.log("Hai vinto");
         }
         console.log("Il tuo punteggio è " + i);
-        
+
         break;
 
     default:

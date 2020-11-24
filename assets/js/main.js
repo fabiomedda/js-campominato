@@ -27,11 +27,9 @@ function getRandomNumber(quantitàNumeriInser, numeroMassimoRaggiungibile) {
   var i = 1, numeriFunzione = [], numeroPcProv = 0;
   while (i <= quantitàNumeriInser) {
     numeroPcProv = Math.ceil( Math.random() * numeroMassimoRaggiungibile );
-    for (var y = 0; y < i; y++) {
-      if (numeriFunzione.indexOf(numeroPcProv) === -1) {
-        numeriFunzione.push(numeroPcProv);
-        i++;
-      }
+    if (numeriFunzione.indexOf(numeroPcProv) === -1) {
+      numeriFunzione.push(numeroPcProv);
+      i++;
     }
   }
   return numeriFunzione;
