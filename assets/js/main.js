@@ -21,40 +21,36 @@ con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2 => tra 1 e 50
 */
 
-var numeriPc = [];
-var numeroPcProv = 0;
-var numeroUtente = [];
-var numeroUtenteProv = 0;
+var numeriPc = [], numeroUtente = [], numeroUtenteProv = 0;
 
-
-var i = 1;
-
-while (i < 17) {
-  numeroPcProv = Math.ceil( Math.random() * 100 );
-
-  for (var y = 0; y < i; y++) {
-
-    if (numeriPc.indexOf(numeroPcProv) === -1) {
-      numeriPc.push(numeroPcProv);
-      i++;
+function getRandomNumber(quantitàNumeri, numeroMassimo) {
+  var i = 1, numeriFunzione = [], numeroPcProv = 0;
+  while (i <= quantitàNumeri) {
+    numeroPcProv = Math.ceil( Math.random() * numeroMassimo );
+    for (var y = 0; y < i; y++) {
+      if (numeriFunzione.indexOf(numeroPcProv) === -1) {
+        numeriFunzione.push(numeroPcProv);
+        i++;
+      }
     }
-
   }
-
+  return numeriFunzione;
 }
 
+numeriPc = getRandomNumber(16, 100);
 console.log(numeriPc);
 
-i = 0;
-while (i < 84) {
-
-  numeroUtenteProv = Number(prompt("Inserisci numero"));
-
-  if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
+var i = 0;
+var possibilità = 100 - 16, numeroMinimo = 1, numeroMassimo = 100;
+while (i < possibilità) {
+  numeroUtenteProv = Number(prompt("Inserisci un numero tra 1 a 100"));
+  if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
+    console.log("Inserisci un numero valido");
+  } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
     console.log("Inserisci un numero che non hai già inserito");
   } else {
     if (numeriPc.indexOf(numeroUtenteProv) !== -1) {
-      console.log("Hai perso");
+      console.log("💣💥");
       break;
     } else {
       numeroUtente.push(numeroUtenteProv);
@@ -62,10 +58,9 @@ while (i < 84) {
       i++;
     }
   }
-
 }
 
-if (i === 84) {
+if (i === possibilità) {
   console.log("Hai vinto");
 }
 console.log("Il tuo punteggio è " + i);
