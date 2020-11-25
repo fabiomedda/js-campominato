@@ -42,96 +42,48 @@ switch (difficoltà) {
 
         numeriPc = getRandomNumber(16, 100);
         console.log(numeriPc);
-        var i = 0;
         var possibilità = 100 - 16, numeroMinimo = 1, numeroMassimo = 100;
-        while (i < possibilità) {
-          numeroUtenteProv = Number(prompt("Inserisci un numero tra 1 a 100"));
-          if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
-            console.log("Inserisci un numero valido");
-          } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
-            console.log("Inserisci un numero che non hai già inserito");
-          } else {
-            if (numeriPc.indexOf(numeroUtenteProv) !== -1) {
-              console.log("💣💥");
-              break;
-            } else {
-              numeroUtente.push(numeroUtenteProv);
-              console.log(numeroUtente);
-              i++;
-            }
-          }
-        }
-
-        if (i === possibilità) {
-          console.log("Hai vinto");
-        }
-        console.log("Il tuo punteggio è " + i);
-
         break;
 
     case 1: // medio
 
         numeriPc = getRandomNumber(16, 80);
         console.log(numeriPc);
-        var i = 0;
         var possibilità = 80 - 16, numeroMinimo = 1, numeroMassimo = 80;
-        while (i < possibilità) {
-          numeroUtenteProv = Number(prompt("Inserisci un numero tra 1 a 80"));
-          if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
-            console.log("Inserisci un numero valido");
-          } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
-            console.log("Inserisci un numero che non hai già inserito");
-          } else {
-            if (numeriPc.indexOf(numeroUtenteProv) !== -1) {
-              console.log("💣💥");
-              break;
-            } else {
-              numeroUtente.push(numeroUtenteProv);
-              console.log(numeroUtente);
-              i++;
-            }
-          }
-        }
-
-        if (i === possibilità) {
-          console.log("Hai vinto");
-        }
-        console.log("Il tuo punteggio è " + i);
-
         break;
 
     case 2: // difficile
 
         numeriPc = getRandomNumber(16, 50);
         console.log(numeriPc);
-        var i = 0;
         var possibilità = 50 - 16, numeroMinimo = 1, numeroMassimo = 50;
-        while (i < possibilità) {
-          numeroUtenteProv = Number(prompt("Inserisci un numero tra 1 a 50"));
-          if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
-            console.log("Inserisci un numero valido");
-          } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
-            console.log("Inserisci un numero che non hai già inserito");
-          } else {
-            if (numeriPc.indexOf(numeroUtenteProv) !== -1) {
-              console.log("💣💥");
-              break;
-            } else {
-              numeroUtente.push(numeroUtenteProv);
-              console.log(numeroUtente);
-              i++;
-            }
-          }
-        }
-
-        if (i === possibilità) {
-          console.log("Hai vinto");
-        }
-        console.log("Il tuo punteggio è " + i);
-
         break;
 
     default:
         console.log("Non ho capito! Riprova.");
         break;
 }
+
+var i = 0;
+while (i < possibilità) {
+  numeroUtenteProv = Number(prompt("Inserisci un numero tra " + numeroMinimo + " a " + numeroMassimo));
+  if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
+    console.log("Inserisci un numero valido");
+  } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
+    console.log("Inserisci un numero che non hai già inserito");
+  } else {
+    if (numeriPc.indexOf(numeroUtenteProv) !== -1) {
+      console.log("💣💥");
+      break;
+    } else {
+      numeroUtente.push(numeroUtenteProv);
+      console.log(numeroUtente);
+      i++;
+    }
+  }
+}
+
+if (i === possibilità) {
+  console.log("Hai vinto");
+}
+console.log("Il tuo punteggio è " + i);
