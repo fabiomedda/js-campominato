@@ -41,8 +41,8 @@ console.log(numeriPc);
 var i = 0;
 var possibilità = 100 - 16, numeroMinimo = 1, numeroMassimo = 100;
 while (i < possibilità) {
-  numeroUtenteProv = Number(prompt("Inserisci un numero tra 1 a 100"));
-  if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
+  numeroUtenteProv = Number(prompt("Inserisci un numero tra " + numeroMinimo + " a " + numeroMassimo));
+  if ( numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo || isNaN(numeroUtenteProv) ) {
     console.log("Inserisci un numero valido");
   } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
     console.log("Inserisci un numero che non hai già inserito");
@@ -61,4 +61,4 @@ while (i < possibilità) {
 if (i === possibilità) {
   console.log("Hai vinto");
 }
-console.log("Il tuo punteggio è " + i);
+console.log("Il tuo punteggio è", i);

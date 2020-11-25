@@ -34,40 +34,52 @@ function getRandomNumber(quantitàNumeriInser, numeroMassimoRaggiungibile) {
 }
 
 var numeriPc = [], numeroUtente = [], numeroUtenteProv = 0;
-var difficoltà = Number(prompt("scegli difficoltà 0 = facile, 1 = medio, 2 = difficile"));
+var possibilità, numeroMinimo, numeroMassimo;
 
-switch (difficoltà) {
+var difficoltàLoop = true;
+while (difficoltàLoop) {
 
-    case 0: // facile
+  var difficoltà = Number(prompt("scegli difficoltà: [0] = facile, [1] = medio, [2] = difficile"));
 
-        numeriPc = getRandomNumber(16, 100);
-        console.log(numeriPc);
-        var possibilità = 100 - 16, numeroMinimo = 1, numeroMassimo = 100;
-        break;
+  switch (difficoltà) {
 
-    case 1: // medio
+      case 0: // facile
 
-        numeriPc = getRandomNumber(16, 80);
-        console.log(numeriPc);
-        var possibilità = 80 - 16, numeroMinimo = 1, numeroMassimo = 80;
-        break;
+          numeriPc = getRandomNumber(16, 100);
+          console.log(numeriPc);
+          possibilità = 100 - 16, numeroMinimo = 1, numeroMassimo = 100;
+          difficoltàLoop = false;
+          break;
 
-    case 2: // difficile
+      case 1: // medio
 
-        numeriPc = getRandomNumber(16, 50);
-        console.log(numeriPc);
-        var possibilità = 50 - 16, numeroMinimo = 1, numeroMassimo = 50;
-        break;
+          numeriPc = getRandomNumber(16, 80);
+          console.log(numeriPc);
+          possibilità = 80 - 16, numeroMinimo = 1, numeroMassimo = 80;
+          difficoltàLoop = false;
+          break;
 
-    default:
-        console.log("Non ho capito! Riprova.");
-        break;
+      case 2: // difficile
+
+          numeriPc = getRandomNumber(16, 50);
+          console.log(numeriPc);
+          possibilità = 50 - 16, numeroMinimo = 1, numeroMassimo = 50;
+          difficoltàLoop = false;
+          break;
+
+      default:
+          console.log("Non ho capito! Riprova.");
+          break;
+  }
+
 }
+
+
 
 var i = 0;
 while (i < possibilità) {
   numeroUtenteProv = Number(prompt("Inserisci un numero tra " + numeroMinimo + " a " + numeroMassimo));
-  if (numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo) {
+  if ( numeroUtenteProv > numeroMassimo || numeroUtenteProv < numeroMinimo || isNaN(numeroUtenteProv) ) {
     console.log("Inserisci un numero valido");
   } else if (numeroUtente.indexOf(numeroUtenteProv) !== -1) {
     console.log("Inserisci un numero che non hai già inserito");
@@ -86,4 +98,4 @@ while (i < possibilità) {
 if (i === possibilità) {
   console.log("Hai vinto");
 }
-console.log("Il tuo punteggio è " + i);
+console.log("Il tuo punteggio è", i);
